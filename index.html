@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ABM: Attention Before Manipulation">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABM: Attention Before Manipulation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/l3.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ABM: Attention Before Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Fan Zhuo</a>,</span>
+            <span class="author-block">
+              <a href="">Tiffany He</a>,</span>
+            <span class="author-block">
+              <a href="">Fei Yu</a>,
+            </span>
+            <span class="author-block">
+              <a href="">Pengteng Li</a>,
+            </span>
+            <span class="author-block">
+              <a href="">Zheyi Zhao</a>,
+            </span>
+            <span class="author-block">
+              <a href="">Xilong Sun</a>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ),</span>
+            <span class="author-block">ShenZhen University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-language models (VLMs) show promising generalization and zero-shot capabilities, offering a potential solution to the impracticality and cost of enabling robots to comprehend diverse human instructions and scene semantics in the real world. Existing approaches most directly integrate the semantic representations from pre-trained VLMs with policy learning. However, these methods are limited to the labeled data learned, resulting in poor generalization ability to unseen instructions and objects. 
+          </p>
+          <p>
+            To address the above limitation, we propose a simple method called “Attention Before Manipulation" (ABM), which fully leverages the object knowledge encoded in CLIP to extract information about the target object in the image. It constructs an Object Mask Field, serving as a better representation of target object for the model to separate visual grounding from action prediction and acquire specific manipulation skills effectively.
+          </p>
+          <p>
+            We train ABM for 8 RLBench tasks and 2 real-world tasks via behavior cloning. Extensive experiments show that our method significantly outperforms the baseline in the zero-shot and compositional generalization experiment settings.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">ABM</h2>
+        
+        <!-- Interpolating. -->
+        <!-- <h3 class="title is-4">Interpolating states</h3> -->
+        <div class="content has-text-justified">
+          <p>
+            We present ABM, whose key idea is to extract rich commonsense from frozen pre-trained CLIP to construct an Object Mask Field and use it as a better representation of target object for policy learning. Our objective is to empower the agent to successfully execute manipulation tasks involving novel object categories not included in the training dataset, guided by instructions. An overview of the proposed ABM is shown below.
+          </p>
+        </div>
+        <br/>
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="hero-body">
+              <figure>
+                <img src="static/images/framework.PNG">
+              </figure>
+              <h2 class="subtitle has-text-centered">
+                 Overview of ABM.
+              </h2>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!--/ Animation. -->
+  </div>
+</section>
+
+<section class="section">
+  
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Experiment Results</h2>
+    <p>
+      We trained a single ABM model from real world data and a single ABM model from RLBench simulation data. In both settings, the single trained ABM model is used to evaluate the performance on all tasks.
+    </p>
+    <br>
+    <h2 class="title is-4">Real World Videos (8X Default Speed)</h2>
+    <h2 class="title is-5">Place Something in Cabinet</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/seen/purple_toy_episode0_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Place the toy in the cabinet
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/unseen/green_toy_episode0_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Place the toy in the cabinet
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/seen/cup_episode1_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Place the cup in the cabinet
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/unseen/mug_episode1_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Place the mug in the cabinet
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Place Something in Plate</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/seen/orange_episode1_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Put the orange in the plate
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/unseen/lemon_episode0_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Put the lemon in the plate
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/seen/soda_episode2_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Put the soda in the plate
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/real-wold/unseen/pepsi_episode2_success.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Put the pepsi in the plate
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<section class="section">
+  
+  <div class="container is-max-desktop">
+    <h2 class="title is-4">Simulation Videos</h2>
+    <h2 class="title is-5">Put in Safe</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/put_money_in_safe.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Put the money away in the safe on the middle shelf
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/put_in_safe.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Put the yellow block away in the safe on the top shelf
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2 class="title is-5">Place Wine</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/place_wine.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Stack the wine bottle to the middle of the rack
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/place_wine.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Stack the green bottle to the right of the rack
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Water Plants</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/water_plant.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Water plant
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/water_plant.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Water plant
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Close Jar</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/close_jar.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Close the purple jar
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/close_jar.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Close the green jar
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Insert Peg</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/insert_peg.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Put the ring on the orange spoke
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/insert_peg.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Put the ring on the black spoke
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Meat off Grill</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/meat_off_grill.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Take the chicken off the grill
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/meat_off_grill.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Take the carrot off the grill
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Pick Block</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/pick_block.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Pick the orange block to yellow target
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/pick_block.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Pick the purple block to green target
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Place Food</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/seen_all/place_food.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Seen</b></font>: Put the carrot in the plate
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/unseen_all/place_food.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+    <font color="#76B900"><b>Unseen</b></font>: Put the green pepper in the plate
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Compositional Tasks</h2>
+    <h2 class="title is-5">Pick Food</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/composition/pick_food.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Unseen</b></font>: Pick the tomato to pink target
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="title is-5">Place Block</h2>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay="" controls="" muted="" loop="" playsinline="" height="100%" onloadstart="this.playbackRate=2">
+	    <source src="static/videos/simulation/composition/place_block.mp4" type="video/mp4" class="figure-img img-fluid rounded">
+          </video>
+          <p>
+	  <font color="#76B900"><b>Unseen</b></font>: Put the orange cube in the plate
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <!-- <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p> -->
+          <p>Based on the awesome open source template from <a
+            href="https://github.com/nerfies/nerfies.github.io">here</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
