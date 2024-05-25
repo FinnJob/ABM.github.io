@@ -6,7 +6,7 @@
         content="ABM: Attention Before Manipulation">
   <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ABM: Attention Before Manipulation</title>
+  <title>ABM: Attention before Manipulation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -32,7 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/l3.svg">
+  <link rel="icon" href="./static/images/gmlab.png">  <!--icon of website-->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -91,26 +91,30 @@
           <h1 class="title is-1 publication-title">ABM: Attention Before Manipulation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="">Fan Zhuo</a>,</span>
-            <span class="author-block">
-              <a href="">Tiffany He</a>,</span>
-            <span class="author-block">
-              <a href="">Fei Yu</a>,
+              <a href="">Fan Zhuo</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="">Pengteng Li</a>,
+              <a href="">Ying He</a><sup>2</sup>,
             </span>
             <span class="author-block">
-              <a href="">Zheyi Zhao</a>,
+              <a href="">Fei Yu</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="">Xilong Sun</a>
+              <a href="">Pengteng Li</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Zheyi Zhao</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Xilong Sun</a><sup>1</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ),</span>
-            <span class="author-block">ShenZhen University</span>
+            <span class="author-block"><sup>1</sup>Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ)</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>2</sup>Shenzhen University</span>
           </div>
 
           <div class="column has-text-centered">
@@ -258,10 +262,10 @@
             Vision-language models (VLMs) show promising generalization and zero-shot capabilities, offering a potential solution to the impracticality and cost of enabling robots to comprehend diverse human instructions and scene semantics in the real world. Existing approaches most directly integrate the semantic representations from pre-trained VLMs with policy learning. However, these methods are limited to the labeled data learned, resulting in poor generalization ability to unseen instructions and objects. 
           </p>
           <p>
-            To address the above limitation, we propose a simple method called “Attention Before Manipulation" (ABM), which fully leverages the object knowledge encoded in CLIP to extract information about the target object in the image. It constructs an Object Mask Field, serving as a better representation of target object for the model to separate visual grounding from action prediction and acquire specific manipulation skills effectively.
+            To address the above limitation, we propose a simple method called "Attention before Manipulation" (ABM), which fully leverages the object knowledge encoded in CLIP to extract information about the target object in the image. It constructs an Object Mask Field, serving as a better representation of the target object for the model to separate visual grounding from action prediction and acquire specific manipulation skills effectively. 
           </p>
           <p>
-            We train ABM for 8 RLBench tasks and 2 real-world tasks via behavior cloning. Extensive experiments show that our method significantly outperforms the baseline in the zero-shot and compositional generalization experiment settings.
+            We train ABM for 8 RLBench tasks and 2 real-world tasks via behavior cloning. Extensive experiments show that our method significantly outperforms the baselines in the zero-shot and compositional generalization experiment settings.
           </p>
         </div>
       </div>
